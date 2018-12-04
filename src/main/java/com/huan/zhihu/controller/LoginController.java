@@ -14,29 +14,29 @@ import java.util.Map;
 
 @Controller
 public class LoginController {
-    private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
-    @Autowired
-    UserService userService;
-
-    @RequestMapping(path = {"/reg/"},method = {RequestMethod.POST})
-    public String register(Model model, @RequestParam("username") String username,@RequestParam("password") String password){
-
-        try {
-            Map<String,String> reg = userService.register(username,password);
-            if(reg.containsKey("msg")){
-                model.addAttribute("msg",reg.get("msg"));
-                return "login";
-            }
-            return "redirect:/";
-        } catch (Exception e) {
-            logger.error("注册异常，"+e.getMessage());
-            return "login";
-        }
-
-    }
-
-    @RequestMapping(path = {"/login/"},method = {RequestMethod.GET})
-    public String login(Model model){
-        return "login";
-    }
+//    private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
+//    @Autowired
+//    UserService userService;
+//
+//    @RequestMapping(path = {"/reg/"},method = {RequestMethod.POST})
+//    public String register(Model model, @RequestParam("username") String username,@RequestParam("password") String password){
+//
+//        try {
+//            Map<String,String> reg = userService.register(username,password);
+//            if(reg.containsKey("msg")){
+//                model.addAttribute("msg",reg.get("msg"));
+//                return "login";
+//            }
+//            return "redirect:/";
+//        } catch (Exception e) {
+//            logger.error("注册异常，"+e.getMessage());
+//            return "login";
+//        }
+//
+//    }
+//
+//    @RequestMapping(path = {"/login/"},method = {RequestMethod.GET})
+//    public String login(Model model){
+//        return "login";
+//    }
 }
