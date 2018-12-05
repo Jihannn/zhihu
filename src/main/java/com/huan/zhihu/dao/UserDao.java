@@ -19,9 +19,13 @@ public interface UserDao {
     @Update("update"+ TABLE_NAME +"set password = #{password} where id = #{id}")
     void updateUserPassword(User user);
 
-    @Select("select"+ SELECT_FIELDS + "from"+ TABLE_NAME +" where id = #{id}")
+    @Select("select"+ SELECT_FIELDS + "from"+ TABLE_NAME +" where name = #{id}")
     User selectUser(int id);
 
-    @Select("select"+ SELECT_FIELDS + "from"+ TABLE_NAME +"where id = #{id}")
-    List<User> getUser(int id);
+    @Select("select"+ SELECT_FIELDS + "from"+ TABLE_NAME +" where name = #{name}")
+    int selectUserId(String name);
+
+    @Select("select"+ SELECT_FIELDS + "from"+ TABLE_NAME +" where name = #{name}")
+    User selectUserName(String name);
+
 }

@@ -33,9 +33,8 @@ public class IndexController {
         List<Question> questionList = questionService.getQuestion(0,0,9);
         List<User> userList = new ArrayList<>();
 
-        for(int i = 1 ; i < 10 ; i++){
-            userList.add(userService.getUser(i));
-        }
+        userList.add(userService.getUser(1));
+
 
         model.addAttribute("question",questionList);
         model.addAttribute("user",userList);
