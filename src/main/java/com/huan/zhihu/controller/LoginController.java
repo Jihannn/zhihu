@@ -1,5 +1,6 @@
 package com.huan.zhihu.controller;
 
+import com.huan.zhihu.Interceptor.PassportInterceptor;
 import com.huan.zhihu.service.RegLogService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,6 +22,7 @@ public  class LoginController {
 
     @Autowired
     RegLogService regLogService;
+    
 
     @RequestMapping(path = "/reg/",method = {RequestMethod.POST})
     public String register(Model model, @RequestParam("username")String username,
@@ -73,6 +75,4 @@ public  class LoginController {
     public String login(){
         return "login";
     }
-
-
 }
