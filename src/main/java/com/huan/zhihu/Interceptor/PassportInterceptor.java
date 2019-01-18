@@ -42,11 +42,11 @@ public class PassportInterceptor implements HandlerInterceptor {
         }
 
         if(ticket != null){
-            LoginTicket loginTicket = loginTicketDao.selectTicket(ticket);
+            LoginTicket loginTicket = loginTicketDao.selectByTicket(ticket);
             if(loginTicket.getTicket() == null || loginTicket.getExpired().before(new Date()) || loginTicket.getStatus() != 0){
                 return true;
             }
-            User user = userDao.selectUser(loginTicket.getuserId());
+            User user = userDao.selectById(loginTicket.getuserId());
             hostHolder.setUser(user);
         }
 

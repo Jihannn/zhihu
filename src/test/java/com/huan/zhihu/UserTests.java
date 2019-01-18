@@ -31,7 +31,7 @@ public class UserTests {
             userDao.addUser(user);
         }
 
-        User a = userDao.selectUser(1);
+        User a = userDao.selectById(1);
         System.out.print(a.toString());
     }
 

@@ -1,19 +1,22 @@
 package com.huan.zhihu.dao;
 
 import com.huan.zhihu.model.LoginTicket;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 @Mapper
 public interface LoginTicketDao {
-    String TABLE_NAME = " login_ticket ";
-    String ROW_FIELDS = " id,user_id,ticket,expired,status ";
+    String TABLE_NAME = "login_ticket";
+    String INSERT_FIELDS = " user_id, expired, status, ticket ";
+    String SELECT_FIELDS = " id, " + INSERT_FIELDS;
 
-    @Insert({"insert into",TABLE_NAME,"(",ROW_FIELDS,") values( #{id},#{userId},#{ticket},#{expired},#{status})"})
-    void addTicket(LoginTicket loginTicket);
+    @Insert({"insert into ", TABLE_NAME, "(", INSERT_FIELDS,
+            ") values (#{userId},#{expired},#{status},#{ticket})"})
+    int addTicket(LoginTicket ticket);
 
-    @Select({"select",ROW_FIELDS,"from",TABLE_NAME,"where ticket = #{ticket}"})
-    LoginTicket selectTicket(String ticket);
+    @Select({"select ", SELECT_FIELDS, " from ", TABLE_NAME, " where ticket=#{ticket}"})
+    LoginTicket selectByTicket(String ticket);
+
+    @Update({"update ", TABLE_NAME, " set status=#{status} where ticket=#{ticket}"})
+    void updateStatus(@Param("ticket") String ticket, @Param("status") int status);
 
 }

@@ -7,6 +7,16 @@ public class User {
     private String salt;
     private String headUrl;
 
+    public User() {
+
+    }
+    public User(String name) {
+        this.name = name;
+        this.passWord = "";
+        this.salt = "";
+        this.headUrl = "";
+    }
+
     public int getId() {
         return id;
     }
